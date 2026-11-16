@@ -1,4 +1,3 @@
-
 from recommender import load_movies
 from sentiment_recommender import (
     calculate_sentiment,
@@ -38,10 +37,19 @@ for title in test_movies:
     )
 
     for index, movie in enumerate(recommendations, start=1):
-        print(f"\n{index}. {movie['title']} ({movie['year']})")
+        print(f"\n{index}. {movie['title']} ({movie.get('release_year', 'Unknown')})")
         print(f"   Sentiment Score: {movie['sentiment_score']}")
-        print(
-            f"   Sentiment Similarity: "
-            f"{movie['sentiment_similarity']:.4f}"
-        )
-        print(f"   Genres: {', '.join(movie['genres'])}")
+      
+print(
+    f"   Sentiment Similarity: "
+    f"{movie['sentiment_similarity']:.4f}"
+)
+print(
+    f"   Genre Similarity: "
+    f"{movie['genre_similarity']:.4f}"
+)
+print(
+    f"   Combined Recommendation Score: "
+    f"{movie['sentiment_recommendation_score']:.4f}"
+)
+print(f"   Genres: {', '.join(movie['genres'])}")
